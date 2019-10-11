@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		925C5D14235083CE002AED9F /* jobs.png in Resources */ = {isa = PBXBuildFile; fileRef = 925C5D13235083CE002AED9F /* jobs.png */; };
-		925C5D16235086AB002AED9F /* gates.png in Resources */ = {isa = PBXBuildFile; fileRef = 925C5D15235086AB002AED9F /* gates.png */; };
 		925C5D1823508951002AED9F /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C5D1723508951002AED9F /* ForecastViewController.swift */; };
+		925C5D1F2350933A002AED9F /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 925C5D1E2350933A002AED9F /* test.png */; };
 		9299A78A234CB29E0022E69A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9299A789234CB29E0022E69A /* AppDelegate.swift */; };
 		9299A78C234CB29E0022E69A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9299A78B234CB29E0022E69A /* ViewController.swift */; };
 		9299A78F234CB29E0022E69A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9299A78D234CB29E0022E69A /* Main.storyboard */; };
@@ -39,10 +39,8 @@
 
 /* Begin PBXFileReference section */
 		925C5D13235083CE002AED9F /* jobs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jobs.png; path = ../../jobs.png; sourceTree = "<group>"; };
-		925C5D15235086AB002AED9F /* gates.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gates.png; path = ../../gates.png; sourceTree = "<group>"; };
 		925C5D1723508951002AED9F /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
-		925C5D1A23508E5B002AED9F /* jobs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jobs.png; sourceTree = "<group>"; };
-		925C5D1B23508E5B002AED9F /* gates.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gates.png; sourceTree = "<group>"; };
+		925C5D1E2350933A002AED9F /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test.png; path = ../../test.png; sourceTree = "<group>"; };
 		9299A786234CB29E0022E69A /* Weather App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9299A789234CB29E0022E69A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9299A78B234CB29E0022E69A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,15 +82,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		925C5D1923508E5A002AED9F /* images */ = {
-			isa = PBXGroup;
-			children = (
-				925C5D1A23508E5B002AED9F /* jobs.png */,
-				925C5D1B23508E5B002AED9F /* gates.png */,
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
 		9299A77D234CB29E0022E69A = {
 			isa = PBXGroup;
 			children = (
@@ -124,9 +113,8 @@
 				9299A792234CB2AC0022E69A /* LaunchScreen.storyboard */,
 				9299A795234CB2AC0022E69A /* Info.plist */,
 				92B57B25234F5E19008356CA /* WeatherData.swift */,
-				925C5D1923508E5A002AED9F /* images */,
+				925C5D1E2350933A002AED9F /* test.png */,
 				925C5D13235083CE002AED9F /* jobs.png */,
-				925C5D15235086AB002AED9F /* gates.png */,
 			);
 			path = "Weather App";
 			sourceTree = "<group>";
@@ -254,9 +242,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9299A794234CB2AC0022E69A /* LaunchScreen.storyboard in Resources */,
+				925C5D1F2350933A002AED9F /* test.png in Resources */,
 				925C5D14235083CE002AED9F /* jobs.png in Resources */,
 				9299A791234CB2AC0022E69A /* Assets.xcassets in Resources */,
-				925C5D16235086AB002AED9F /* gates.png in Resources */,
 				9299A78F234CB29E0022E69A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

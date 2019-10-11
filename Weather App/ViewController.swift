@@ -72,7 +72,7 @@ class ViewController: UIViewController {
             self.temperatureLabel.isHidden = false
             
             // PLACEHOLDER: changing img to Gates after load is done
-            self.weatherImg.image = UIImage(named: "gates")
+            self.weatherImg.image = UIImage(named: "test")
         })
         
     }
