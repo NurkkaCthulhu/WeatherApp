@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;City Name&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVM-fe-DzE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVM-fe-DzE">
                                 <rect key="frame" x="20" y="195" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -27,7 +27,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jobs.png" translatesAutoresizingMaskIntoConstraints="NO" id="49n-gP-ICv">
                                 <rect key="frame" x="20" y="236" width="335" height="150"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Temperature&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qex-Ia-iEm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qex-Ia-iEm">
                                 <rect key="frame" x="20" y="406" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -62,23 +62,39 @@
         <!--Forecast-->
         <scene sceneID="iNn-Eg-ezD">
             <objects>
-                <viewController title="Forecast" id="hZe-Zg-y2q" sceneMemberID="viewController">
+                <viewController title="Forecast" id="hZe-Zg-y2q" customClass="ForecastViewController" customModule="Weather_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oN6-oq-1CQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Table view 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMF-Hm-6Mo">
-                                <rect key="frame" x="165" y="300" width="92" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Ko-4m-5Gh">
+                                <rect key="frame" x="20" y="81" width="335" height="517"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 day weather" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7EY-vq-LKg">
+                                <rect key="frame" x="20" y="40" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="m3C-Nv-bSQ" firstAttribute="trailing" secondItem="4Ko-4m-5Gh" secondAttribute="trailing" constant="20" id="4LX-HV-0KK"/>
+                            <constraint firstItem="7EY-vq-LKg" firstAttribute="leading" secondItem="m3C-Nv-bSQ" secondAttribute="leading" constant="20" id="NLU-tZ-agV"/>
+                            <constraint firstItem="m3C-Nv-bSQ" firstAttribute="trailing" secondItem="7EY-vq-LKg" secondAttribute="trailing" constant="20" id="Wm7-zT-ZKM"/>
+                            <constraint firstItem="4Ko-4m-5Gh" firstAttribute="top" secondItem="7EY-vq-LKg" secondAttribute="bottom" constant="20" id="cdH-ie-rY1"/>
+                            <constraint firstItem="4Ko-4m-5Gh" firstAttribute="leading" secondItem="m3C-Nv-bSQ" secondAttribute="leading" constant="20" id="cvP-y8-xe8"/>
+                            <constraint firstItem="m3C-Nv-bSQ" firstAttribute="bottom" secondItem="4Ko-4m-5Gh" secondAttribute="bottom" constant="20" id="iBi-n6-j82"/>
+                            <constraint firstItem="7EY-vq-LKg" firstAttribute="top" secondItem="m3C-Nv-bSQ" secondAttribute="top" constant="20" id="zKM-y6-alp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="m3C-Nv-bSQ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Forecast" id="ifY-Yp-252"/>
+                    <connections>
+                        <outlet property="forecastTable" destination="4Ko-4m-5Gh" id="IMX-aw-mIt"/>
+                        <outlet property="view" destination="oN6-oq-1CQ" id="hGz-kc-Wc7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IsV-NH-5QH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
