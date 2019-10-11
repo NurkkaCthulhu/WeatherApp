@@ -13,13 +13,16 @@ class ViewController: UIViewController {
     // UI links
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var weatherImg: UIImageView!
     
-    let apiUrl : String = "https://api.openweathermap.org/data/2.5/forecast?lat=35&lon=139&APPID=65fee87105e0a7f8e4ad98ebda49d0e4"
+    let apiUrl : String = "https://api.openweathermap.org/data/2.5/forecast?q=Tampere,fi&APPID=65fee87105e0a7f8e4ad98ebda49d0e4"
     var currentCity : String = ""
+    var currentTemperature : Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         
         fetchUrl(url: apiUrl);
     }
@@ -33,17 +36,12 @@ class ViewController: UIViewController {
         let url : URL? = URL(string: url)
         
         let task = session.dataTask(with: url!, completionHandler: doneFetching);
-        
         // Starts the task, spawns a new thread and calls the callback function
         task.resume();
     }
     
     func doneFetching(data: Data?, response: URLResponse?, error: Error?) {
-        let resstr = String(data: data!, encoding: String.Encoding.utf8)
-        
-
-        
-        //print(data) tulee optional
+        //let resstr = String(data: data!, encoding: String.Encoding.utf8)
         
         let decoder = JSONDecoder()
         do {
@@ -54,18 +52,21 @@ class ViewController: UIViewController {
             print(weather.city.name)
 
             currentCity = weather.city.name
+            currentTemperature = weather.list[0].main.temp
+            currentTemperature = currentTemperature - 273.15
             
-            //completionHandler(user, nil)
         } catch {
             print("error trying to convert data to JSON")
             print(error)
-            //completionHandler(nil, error)
         }
         
         // Execute stuff in UI thread
         DispatchQueue.main.async(execute: {() in
-            //print(resstr!)
             self.cityLabel.text = self.currentCity
+            self.temperatureLabel.text = "\(String(format:"%.01f", self.currentTemperature)) °C"
+            
+            // PLACEHOLDER: change img to Gates after load is done
+            self.weatherImg.image = UIImage(named: "gates")
         })
         
     }
