@@ -18,28 +18,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;City Name&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVM-fe-DzE">
-                                <rect key="frame" x="137" y="237" width="101" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;City Name&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVM-fe-DzE">
+                                <rect key="frame" x="20" y="195" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;Temperature&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qex-Ia-iEm">
-                                <rect key="frame" x="149" y="374" width="119" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jobs.png" translatesAutoresizingMaskIntoConstraints="NO" id="49n-gP-ICv">
+                                <rect key="frame" x="20" y="236" width="335" height="150"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Temperature&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qex-Ia-iEm">
+                                <rect key="frame" x="20" y="406" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="49n-gP-ICv" secondAttribute="trailing" constant="20" id="7dC-NZ-VZp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qVM-fe-DzE" secondAttribute="trailing" constant="20" id="Mqg-gb-N9s"/>
+                            <constraint firstItem="Qex-Ia-iEm" firstAttribute="top" secondItem="49n-gP-ICv" secondAttribute="bottom" constant="20" id="O6m-Et-ND1"/>
+                            <constraint firstItem="49n-gP-ICv" firstAttribute="top" secondItem="qVM-fe-DzE" secondAttribute="bottom" constant="20" id="RAV-ud-Lc4"/>
+                            <constraint firstItem="49n-gP-ICv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ZuG-Pl-u6t"/>
+                            <constraint firstItem="Qex-Ia-iEm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="pmF-dK-JE3"/>
+                            <constraint firstItem="qVM-fe-DzE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="175" id="qqD-hA-4Vj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qex-Ia-iEm" secondAttribute="trailing" constant="20" id="tpA-5A-80h"/>
+                            <constraint firstItem="qVM-fe-DzE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xYd-Ob-DEN"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Current weather" id="D6w-3W-VDK"/>
                     <connections>
                         <outlet property="cityLabel" destination="qVM-fe-DzE" id="8Sy-cS-cUs"/>
                         <outlet property="temperatureLabel" destination="Qex-Ia-iEm" id="OGA-Rh-gon"/>
+                        <outlet property="weatherImg" destination="49n-gP-ICv" id="ptv-TI-l3A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -102,6 +115,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Hzs-qu-cHH" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Xy-Mn-eNy">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -116,4 +130,7 @@
             <point key="canvasLocation" x="9" y="-545"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="jobs.png" width="150" height="150"/>
+    </resources>
 </document>
