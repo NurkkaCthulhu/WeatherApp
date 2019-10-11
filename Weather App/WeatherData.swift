@@ -9,7 +9,7 @@
 struct WeatherData: Codable {
     var city: City
     var cod : String
-    var list : [Temperature]
+    var list : [TemperatureList]
 
 }
 
@@ -23,10 +23,10 @@ struct Coordinates : Codable {
     var lon : Double
 }
 
-struct Temperature : Codable {
-    var main : Helper
+struct TemperatureList : Codable {
+    var main : Temperature
 }
 
-struct Helper : Codable {
+struct Temperature : Codable {
     var temp : Double
 }
