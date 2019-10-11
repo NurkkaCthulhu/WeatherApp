@@ -8,7 +8,6 @@
 
 struct WeatherData: Codable {
     var city: City
-    var cod : String
     var list : [TemperatureList]
 
 }
