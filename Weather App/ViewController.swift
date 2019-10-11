@@ -23,7 +23,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
+        cityLabel.isHidden = true
+        temperatureLabel.isHidden = true
         fetchUrl(url: apiUrl);
     }
 
@@ -62,10 +63,15 @@ class ViewController: UIViewController {
         
         // Execute stuff in UI thread
         DispatchQueue.main.async(execute: {() in
+            
             self.cityLabel.text = self.currentCity
             self.temperatureLabel.text = "\(String(format:"%.01f", self.currentTemperature)) °C"
             
-            // PLACEHOLDER: change img to Gates after load is done
+            // Unhide labels
+            self.cityLabel.isHidden = false
+            self.temperatureLabel.isHidden = false
+            
+            // PLACEHOLDER: changing img to Gates after load is done
             self.weatherImg.image = UIImage(named: "gates")
         })
         
