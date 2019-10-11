@@ -103,13 +103,13 @@
         <!--City-->
         <scene sceneID="VvS-J3-muJ">
             <objects>
-                <viewController id="4rZ-Ov-N3s" sceneMemberID="viewController">
+                <viewController id="4rZ-Ov-N3s" customClass="CityViewController" customModule="Weather_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vbf-Qb-E8k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TableView2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrZ-5K-4wX">
-                                <rect key="frame" x="167" y="323" width="87" height="21"/>
+                                <rect key="frame" x="144" y="323" width="87" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -120,10 +120,13 @@
                         <viewLayoutGuide key="safeArea" id="fce-KE-8M8"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="City" id="sO5-yI-h8L"/>
+                    <connections>
+                        <outlet property="view" destination="vbf-Qb-E8k" id="vjd-Jd-GBA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AE5-yR-XfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="679" y="517"/>
+            <point key="canvasLocation" x="756" y="456"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ah1-1k-nTM">
