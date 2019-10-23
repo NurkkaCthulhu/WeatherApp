@@ -10,6 +10,8 @@ import UIKit
 
 class ForecastViewController: UIViewController {
 
+    
+    // UI links
     @IBOutlet weak var forecastTable: UITableView!
     
     override func viewDidLoad() {

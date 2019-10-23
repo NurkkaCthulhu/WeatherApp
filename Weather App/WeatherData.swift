@@ -8,9 +8,7 @@
 
 struct WeatherData: Codable {
     var city: City
-    var cod : String
     var list : [TemperatureList]
-
 }
 
 struct City : Codable {
@@ -25,8 +23,13 @@ struct Coordinates : Codable {
 
 struct TemperatureList : Codable {
     var main : Temperature
+    var weather: [WeatherIcon]
 }
 
 struct Temperature : Codable {
     var temp : Double
+}
+
+struct WeatherIcon: Codable {
+    var icon: String
 }
