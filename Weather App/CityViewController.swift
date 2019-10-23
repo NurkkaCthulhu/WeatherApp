@@ -14,6 +14,9 @@ class CityViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager : CLLocationManager!
     var geocoder = CLGeocoder()
     
+    // UI links
+    @IBOutlet weak var cityTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

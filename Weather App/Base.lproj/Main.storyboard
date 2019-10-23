@@ -48,7 +48,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Current weather" id="D6w-3W-VDK"/>
+                    <tabBarItem key="tabBarItem" title="Current weather" image="currentweather.png" id="D6w-3W-VDK"/>
                     <connections>
                         <outlet property="cityLabel" destination="qVM-fe-DzE" id="8Sy-cS-cUs"/>
                         <outlet property="temperatureLabel" destination="Qex-Ia-iEm" id="OGA-Rh-gon"/>
@@ -90,7 +90,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="m3C-Nv-bSQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Forecast" id="ifY-Yp-252"/>
+                    <tabBarItem key="tabBarItem" title="Forecast" image="forecast.png" id="ifY-Yp-252"/>
                     <connections>
                         <outlet property="forecastTable" destination="4Ko-4m-5Gh" id="IMX-aw-mIt"/>
                         <outlet property="view" destination="oN6-oq-1CQ" id="hGz-kc-Wc7"/>
@@ -108,19 +108,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TableView2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrZ-5K-4wX">
-                                <rect key="frame" x="144" y="323" width="87" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Ni-8H-llY">
+                                <rect key="frame" x="20" y="40" width="335" height="558"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7Ni-8H-llY" firstAttribute="leading" secondItem="fce-KE-8M8" secondAttribute="leading" constant="20" id="Y8f-JR-csq"/>
+                            <constraint firstItem="fce-KE-8M8" firstAttribute="trailing" secondItem="7Ni-8H-llY" secondAttribute="trailing" constant="20" id="a8h-x3-9it"/>
+                            <constraint firstItem="7Ni-8H-llY" firstAttribute="top" secondItem="fce-KE-8M8" secondAttribute="top" constant="20" id="hgn-JH-4j6"/>
+                            <constraint firstItem="fce-KE-8M8" firstAttribute="bottom" secondItem="7Ni-8H-llY" secondAttribute="bottom" constant="20" id="qae-eY-ocj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fce-KE-8M8"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="City" id="sO5-yI-h8L"/>
+                    <tabBarItem key="tabBarItem" title="City" image="city.png" id="sO5-yI-h8L"/>
                     <connections>
+                        <outlet property="cityTableView" destination="7Ni-8H-llY" id="V9W-OL-l7A"/>
                         <outlet property="view" destination="vbf-Qb-E8k" id="vjd-Jd-GBA"/>
                     </connections>
                 </viewController>
@@ -150,6 +154,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="city.png" width="25" height="25"/>
+        <image name="currentweather.png" width="25" height="25"/>
+        <image name="forecast.png" width="25" height="25"/>
         <image name="load0.png" width="256" height="128"/>
     </resources>
 </document>
