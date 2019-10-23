@@ -10,6 +10,7 @@ import UIKit
 
 class ForecastViewController: UIViewController {
 
+    var locationWeather : LocationWeatherModel!
     
     // UI links
     @IBOutlet weak var forecastTable: UITableView!

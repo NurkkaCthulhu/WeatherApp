@@ -16,8 +16,20 @@ class LocationWeatherModel {
     
     init() {
         temperatureList = []
-        lat = 0
-        lon = 0
+        lat = 61.4978
+        lon = 23.7610
         lastFetch = Date()
+    }
+}
+
+class WeatherObject {
+    var temperature : Double
+    var time : String
+    var icon : String
+    
+    init() {
+        temperature = 0.0
+        time = "1900-01-01 00:00:00"
+        icon = ""
     }
 }

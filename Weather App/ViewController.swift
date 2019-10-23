@@ -11,9 +11,9 @@ import UIKit
 class ViewController: UIViewController {
 
     // UI links
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var weatherImg: UIImageView!
+    @IBOutlet weak var cityLabel : UILabel!
+    @IBOutlet weak var temperatureLabel : UILabel!
+    @IBOutlet weak var weatherImg : UIImageView!
     
     // Animation images
     var load0 : UIImage!
@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     var loadingImages : [UIImage]!
     var animatedImg : UIImage!
     
+    var locationWeather: LocationWeatherModel!
     let apiUrl : String = "https://api.openweathermap.org/data/2.5/forecast?q=Tampere,fi&APPID=65fee87105e0a7f8e4ad98ebda49d0e4"
     var currentCity : String = ""
     var currentTemperature : Double = 0.0

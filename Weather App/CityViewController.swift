@@ -13,6 +13,7 @@ class CityViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager : CLLocationManager!
     var geocoder = CLGeocoder()
+    var locationWeather : LocationWeatherModel!
     
     // UI links
     @IBOutlet weak var cityTableView: UITableView!
