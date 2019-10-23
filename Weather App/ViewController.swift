@@ -15,6 +15,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherImg: UIImageView!
     
+    // Animation images
+    var load0: UIImage!
+    var load1: UIImage!
+    var load2: UIImage!
+    var load3: UIImage!
+    var load4: UIImage!
+    var load5: UIImage!
+    var loadingImages: [UIImage]!
+    var animatedImg: UIImage!
+    
     let apiUrl : String = "https://api.openweathermap.org/data/2.5/forecast?q=Tampere,fi&APPID=65fee87105e0a7f8e4ad98ebda49d0e4"
     var currentCity : String = ""
     var currentTemperature : Double = 0.0
@@ -22,12 +32,27 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        addLoadingAnimation()
 
-        cityLabel.isHidden = true
+        cityLabel.text = "Loading..."
         temperatureLabel.isHidden = true
         
         fetchUrl(url: apiUrl);
+    }
+    
+    func addLoadingAnimation() {
+        self.load0 = UIImage(named: "load0")
+        self.load1 = UIImage(named: "load1")
+        self.load2 = UIImage(named: "load2")
+        self.load3 = UIImage(named: "load3")
+        self.load4 = UIImage(named: "load4")
+        self.load5 = UIImage(named: "load5")
+        
+        self.loadingImages = [load0, load1, load2, load3, load4, load5]
+        
+        self.animatedImg = UIImage.animatedImage(with: loadingImages, duration: 0.8)
+        self.weatherImg.image = animatedImg
     }
 
     
