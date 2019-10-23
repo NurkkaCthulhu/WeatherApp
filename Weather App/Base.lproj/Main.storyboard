@@ -24,11 +24,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jobs.png" translatesAutoresizingMaskIntoConstraints="NO" id="49n-gP-ICv">
-                                <rect key="frame" x="20" y="236" width="335" height="150"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="load0.png" translatesAutoresizingMaskIntoConstraints="NO" id="49n-gP-ICv">
+                                <rect key="frame" x="20" y="236" width="335" height="128"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qex-Ia-iEm">
-                                <rect key="frame" x="20" y="406" width="335" height="21"/>
+                                <rect key="frame" x="20" y="384" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -150,6 +150,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="jobs.png" width="150" height="150"/>
+        <image name="load0.png" width="256" height="128"/>
     </resources>
 </document>
