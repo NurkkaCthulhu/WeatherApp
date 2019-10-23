@@ -18,13 +18,15 @@ class ViewController: UIViewController {
     let apiUrl : String = "https://api.openweathermap.org/data/2.5/forecast?q=Tampere,fi&APPID=65fee87105e0a7f8e4ad98ebda49d0e4"
     var currentCity : String = ""
     var currentTemperature : Double = 0.0
+    var currentWeatherIcon : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         cityLabel.isHidden = true
         temperatureLabel.isHidden = true
+        
         fetchUrl(url: apiUrl);
     }
 
@@ -55,6 +57,7 @@ class ViewController: UIViewController {
             currentCity = weather.city.name
             currentTemperature = weather.list[0].main.temp
             currentTemperature = currentTemperature - 273.15
+            currentWeatherIcon = weather.list[0].weather[0].icon
             
         } catch {
             print("error trying to convert data to JSON")
@@ -71,8 +74,8 @@ class ViewController: UIViewController {
             self.cityLabel.isHidden = false
             self.temperatureLabel.isHidden = false
             
-            // PLACEHOLDER: changing img to Gates after load is done
-            self.weatherImg.image = UIImage(named: "test")
+            // Update weather icon
+            self.weatherImg.image = UIImage(named: self.currentWeatherIcon)
         })
         
     }
