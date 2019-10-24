@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CityViewController: UIViewController {
+class CityViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var locationWeather : LocationWeatherModel!
     
@@ -18,8 +18,22 @@ class CityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.cityTableView.dataSource = self
+        self.cityTableView.delegate = self
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print(indexPath)
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "cityName")
+        cell.textLabel?.text = "Current city"
+        cell.imageView?.image = UIImage(named: "city")
+        return cell
+    }
     
     // vv ALERT FUNCTION vv
     func showAlert(userInput : String) {
