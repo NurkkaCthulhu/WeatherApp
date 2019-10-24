@@ -35,15 +35,33 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=Tampere,fi&APPID=\(self.secretKeys.api)"
+        self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=\(self.locationWeather.lat)&lon=\(self.locationWeather.lon)&APPID=\(self.secretKeys.api)"
         print(self.locationWeather)
         
         addLoadingAnimation()
 
         cityLabel.text = "Loading..."
         temperatureLabel.isHidden = true
+        if fetchNewData() {
+            fetchUrl(url: apiUrl)
+        }
+    }
+    
+    func fetchNewData() -> Bool {
+        let currentDate = Date()
+        let seconds = currentDate.timeIntervalSince(locationWeather.lastFetch)
+        let minutes = seconds/60
+        print(locationWeather.lastFetch)
         
-        fetchUrl(url: apiUrl);
+        if minutes >= 5 {
+            print("over 5min")
+            locationWeather.lastFetch = currentDate
+            print(locationWeather.lastFetch)
+            return true
+        } else {
+            print("not even 5min")
+            return false
+        }
     }
     
     func addLoadingAnimation() {
@@ -83,10 +101,15 @@ class ViewController: UIViewController {
             print("test printing something small from the object:")
             print(weather.city.name)
 
+            
             currentCity = weather.city.name
             currentTemperature = weather.list[0].main.temp
             currentTemperature = currentTemperature - 273.15
+            
+            locationWeather.temperatureList.append(currentTemperature)
+            
             currentWeatherIcon = weather.list[0].weather[0].icon
+            locationWeather.icon = currentWeatherIcon
             
         } catch {
             print("Error trying to convert data to JSON")

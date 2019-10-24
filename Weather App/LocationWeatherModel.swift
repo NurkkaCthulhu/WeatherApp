@@ -13,12 +13,14 @@ class LocationWeatherModel {
     var lat : Double
     var lon : Double
     var lastFetch : Date
+    var icon: String
     
     init() {
         temperatureList = []
         lat = 61.4978
         lon = 23.7610
-        lastFetch = Date()
+        lastFetch = Date(timeIntervalSinceReferenceDate: -123456789.0)
+        icon = "city"
     }
 }
 
