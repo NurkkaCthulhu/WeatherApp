@@ -18,6 +18,7 @@ struct City : Codable {
 struct TemperatureList : Codable {
     var main : Temperature
     var weather: [WeatherIcon]
+    var dt_txt : String
 }
 
 struct Temperature : Codable {
