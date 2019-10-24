@@ -64,16 +64,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         //self.meetingCostModel.latitude = (userLocation?.coordinate.latitude)!
         //self.meetingCostModel.longitude = (userLocation?.coordinate.longitude)!
-        print("locationmanager functio \(String(describing: userLocation?.coordinate.latitude))!")
-        print("locationmanager functio \(String(describing: userLocation?.coordinate.longitude))!")
+        //print("locationmanager functio \(String(describing: userLocation?.coordinate.latitude))!")
+        //print("locationmanager functio \(String(describing: userLocation?.coordinate.longitude))!")
         
-        addLocationToField()
+        locationWeather.lat = (userLocation?.coordinate.latitude)!
+        locationWeather.lon = (userLocation?.coordinate.longitude)!
+        
+        findCityFromCoordinates()
         
         self.locationManager.stopUpdatingLocation()
     }
     
-    func addLocationToField() {
-        let location = CLLocation(latitude: 37.785834, longitude: -122.406417)
+    func findCityFromCoordinates() {
+        let location = CLLocation(latitude: locationWeather.lat, longitude: locationWeather.lon)
         print("add location to field")
         // Start reversing the location lat/long into a city
         geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
@@ -82,6 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             } else {
                 if let placemarks = placemarks, let placemark = placemarks.first {
                     print("You are in \(placemark.locality!)")
+                    self.locationWeather.city = placemark.locality!
                 } else {
                     //self.meetingName.text = "No Matching Addresses Found"
                 }
