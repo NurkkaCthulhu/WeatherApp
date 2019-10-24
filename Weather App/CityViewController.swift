@@ -12,6 +12,7 @@ import UIKit
 class CityViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var locationWeather : LocationWeatherModel!
+    var locationsArray = ["Current city", "Tampere"]
     
     // UI links
     @IBOutlet weak var cityTableView: UITableView!
@@ -24,15 +25,19 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.locationsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(indexPath)
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cityName")
-        cell.textLabel?.text = "Current city"
-        cell.imageView?.image = UIImage(named: "city")
-        return cell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cityName")
+    
+        if (cell == nil) {
+            cell = UITableViewCell(style: .default, reuseIdentifier: "cityName")
+        }
+        cell!.textLabel?.text = self.locationsArray[indexPath.row]
+        cell!.imageView?.image = UIImage(named: "city")
+        
+        return cell!
     }
     
     // vv ALERT FUNCTION vv
