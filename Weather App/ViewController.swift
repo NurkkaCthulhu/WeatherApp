@@ -26,7 +26,8 @@ class ViewController: UIViewController {
     var animatedImg : UIImage!
     
     var locationWeather: LocationWeatherModel!
-    let apiUrl : String = "https://api.openweathermap.org/data/2.5/forecast?q=Tampere,fi&APPID=65fee87105e0a7f8e4ad98ebda49d0e4"
+    var secretKeys : SecretKeys = SecretKeys()
+    var apiUrl : String!
     var currentCity : String = ""
     var currentTemperature : Double = 0.0
     var currentWeatherIcon : String = ""
@@ -34,6 +35,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=Tampere,fi&APPID=\(self.secretKeys.api)"
+        print(self.locationWeather)
         
         addLoadingAnimation()
 
@@ -76,7 +79,7 @@ class ViewController: UIViewController {
         do {
             weather = try decoder.decode(WeatherData.self, from: data!)
             print("print whole Weather object:")
-            print(weather)
+            //print(weather)
             print("test printing something small from the object:")
             print(weather.city.name)
 

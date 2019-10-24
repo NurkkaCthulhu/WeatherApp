@@ -13,6 +13,7 @@
 		921768CA23605DB800F79F08 /* load2.png in Resources */ = {isa = PBXBuildFile; fileRef = 921768C423605DB800F79F08 /* load2.png */; };
 		921768CB23605DB800F79F08 /* load4.png in Resources */ = {isa = PBXBuildFile; fileRef = 921768C523605DB800F79F08 /* load4.png */; };
 		921768CC23605DB800F79F08 /* load1.png in Resources */ = {isa = PBXBuildFile; fileRef = 921768C623605DB800F79F08 /* load1.png */; };
+		9259A2B02361DDEE001B8F6C /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9259A2AF2361DDEE001B8F6C /* SecretKeys.swift */; };
 		925C5D1823508951002AED9F /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C5D1723508951002AED9F /* ForecastViewController.swift */; };
 		925C5D2123509868002AED9F /* LocationWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C5D2023509868002AED9F /* LocationWeatherModel.swift */; };
 		925C5D2323509940002AED9F /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C5D2223509940002AED9F /* CityViewController.swift */; };
@@ -77,6 +78,7 @@
 		921768C423605DB800F79F08 /* load2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = load2.png; sourceTree = "<group>"; };
 		921768C523605DB800F79F08 /* load4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = load4.png; sourceTree = "<group>"; };
 		921768C623605DB800F79F08 /* load1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = load1.png; sourceTree = "<group>"; };
+		9259A2AF2361DDEE001B8F6C /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		925C5D1723508951002AED9F /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
 		925C5D2023509868002AED9F /* LocationWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWeatherModel.swift; sourceTree = "<group>"; };
 		925C5D2223509940002AED9F /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				926B274E236050700027BD28 /* city.png */,
 				926B2754236050700027BD28 /* currentweather.png */,
 				926B274F236050700027BD28 /* forecast.png */,
+				9259A2AF2361DDEE001B8F6C /* SecretKeys.swift */,
 			);
 			path = "Weather App";
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				925C5D1823508951002AED9F /* ForecastViewController.swift in Sources */,
 				92B57B26234F5E19008356CA /* WeatherData.swift in Sources */,
 				9299A78A234CB29E0022E69A /* AppDelegate.swift in Sources */,
+				9259A2B02361DDEE001B8F6C /* SecretKeys.swift in Sources */,
 				925C5D2323509940002AED9F /* CityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
