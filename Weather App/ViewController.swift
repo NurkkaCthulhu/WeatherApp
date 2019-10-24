@@ -39,9 +39,18 @@ class ViewController: UIViewController {
 
         cityLabel.text = "Loading..."
         temperatureLabel.isHidden = true
-        
-        // Check if data was fetched over 5 minutes ago, if yes then fetch again
-        if fetchNewData() {
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        /*
+        print("uudellee main viewis")
+        print(cityLabel.text)
+        print(locationWeather.city)
+        */
+        // Do fetch if city was changed or over 5min has gone by since last fetch
+        if cityLabel.text != locationWeather.city || fetchNewData() {
+            print("uus fetch")
             fetchUrl(url: apiUrl)
         }
     }
@@ -50,15 +59,13 @@ class ViewController: UIViewController {
         let currentDate = Date()
         let seconds = currentDate.timeIntervalSince(locationWeather.lastFetch)
         let minutes = seconds/60
-        print(locationWeather.lastFetch)
         
         if minutes >= 5 {
-            print("over 5min")
+            //print("over 5min")
             locationWeather.lastFetch = currentDate
-            print(locationWeather.lastFetch)
             return true
         } else {
-            print("not even 5min")
+            //print("not even 5min")
             return false
         }
     }
@@ -78,6 +85,9 @@ class ViewController: UIViewController {
     }
 
     func fetchUrl(url : String) {
+        
+        print("we fetching bois")
+        
         let config = URLSessionConfiguration.default
         
         let session = URLSession(configuration: config)
@@ -90,7 +100,8 @@ class ViewController: UIViewController {
     }
     
     func doneFetching(data: Data?, response: URLResponse?, error: Error?) {
-        //let resstr = String(data: data!, encoding: String.Encoding.utf8)
+        
+        locationWeather.temperatureList.removeAll()
         
         let decoder = JSONDecoder()
         do {
@@ -102,8 +113,6 @@ class ViewController: UIViewController {
 
             var currentTemperature = weatherData.list[0].main.temp
             currentTemperature = currentTemperature - 273.15
-            
-            print(weatherData.list[0].dt_txt)
 
             let currentWeatherIcon = weatherData.list[0].weather[0].icon
             print(weatherData.list.count)
