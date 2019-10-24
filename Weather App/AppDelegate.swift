@@ -26,6 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let myViewController = tabController.viewControllers![0] as! ViewController
         myViewController.locationWeather = self.locationWeather
         
+        let myForecastViewController = tabController.viewControllers![1] as! ForecastViewController
+        myForecastViewController.locationWeather = self.locationWeather
+        
+        let myCityViewController = tabController.viewControllers![2] as! CityViewController
+        myCityViewController.locationWeather = self.locationWeather
+        
         determineMyCurrentLocation()
         
         return true
@@ -48,7 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     // vv LOCATION RELATED FUNCTIONS vv
     func determineMyCurrentLocation() {
-        print("koitetaa deteminecurrentlocation")
         locationManager = CLLocationManager()
         locationManager.delegate = self
         
@@ -77,15 +82,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func findCityFromCoordinates() {
         let location = CLLocation(latitude: locationWeather.lat, longitude: locationWeather.lon)
-        print("add location to field")
+        //let location = CLLocation(latitude: 0, longitude: 0)
         // Start reversing the location lat/long into a city
         geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
             if let error = error {
                 print("Unable to Reverse Geocode Location (\(error))")
             } else {
                 if let placemarks = placemarks, let placemark = placemarks.first {
-                    print("You are in \(placemark.locality!)")
-                    self.locationWeather.city = placemark.locality!
+                    if placemark.locality != nil {
+                        self.locationWeather.city = placemark.locality!
+                    } else {
+                        self.locationWeather.city = "Tampere"
+                        self.locationWeather.lat = 61.4978
+                        self.locationWeather.lon = 23.7610
+                    }
+                    
                 } else {
                     //self.meetingName.text = "No Matching Addresses Found"
                 }
