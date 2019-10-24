@@ -13,12 +13,6 @@ struct WeatherData: Codable {
 
 struct City : Codable {
     var name : String
-    //var coor : Coordinates
-}
-
-struct Coordinates : Codable {
-    var lat : Double
-    var lon : Double
 }
 
 struct TemperatureList : Codable {
