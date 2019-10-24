@@ -22,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         locationWeather = LocationWeatherModel()
         
+        let tabController = self.window!.rootViewController as! UITabBarController
+        let myViewController = tabController.viewControllers![0] as! ViewController
+        myViewController.locationWeather = self.locationWeather
+        
         determineMyCurrentLocation()
         
         return true
