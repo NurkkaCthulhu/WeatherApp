@@ -28,10 +28,7 @@ class ViewController: UIViewController {
     var locationWeather: LocationWeatherModel!
     var secretKeys : SecretKeys = SecretKeys()
     var apiUrl : String!
-    var currentCity : String = ""
-    var currentTemperature : Double = 0.0
-    var currentWeatherIcon : String = ""
-    var weather : WeatherData!
+    var weatherData : WeatherData!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +39,8 @@ class ViewController: UIViewController {
 
         cityLabel.text = "Loading..."
         temperatureLabel.isHidden = true
+        
+        // Check if data was fetched over 5 minutes ago, if yes then fetch again
         if fetchNewData() {
             fetchUrl(url: apiUrl)
         }
@@ -95,21 +94,20 @@ class ViewController: UIViewController {
         
         let decoder = JSONDecoder()
         do {
-            weather = try decoder.decode(WeatherData.self, from: data!)
-            print("print whole Weather object:")
+            self.weatherData = try decoder.decode(WeatherData.self, from: data!)
+            //print("print whole Weather object:")
             //print(weather)
-            print("test printing something small from the object:")
-            print(weather.city.name)
+            //print("test printing something small from the object:")
+            //print(weather.city.name)
 
-            
-            currentCity = weather.city.name
-            currentTemperature = weather.list[0].main.temp
+            var currentTemperature = weatherData.list[0].main.temp
             currentTemperature = currentTemperature - 273.15
             
-            locationWeather.temperatureList.append(currentTemperature)
-            
-            currentWeatherIcon = weather.list[0].weather[0].icon
-            locationWeather.icon = currentWeatherIcon
+            print(weatherData.list[0].dt_txt)
+
+            let currentWeatherIcon = weatherData.list[0].weather[0].icon
+            print(weatherData.list.count)
+            locationWeather.temperatureList.append(WeatherObject(temperature: currentTemperature, time: weatherData.list[0].dt_txt, icon: currentWeatherIcon))
             
         } catch {
             print("Error trying to convert data to JSON")
@@ -119,15 +117,17 @@ class ViewController: UIViewController {
         // Execute stuff in UI thread
         DispatchQueue.main.async(execute: {() in
             
-            self.cityLabel.text = self.currentCity
-            self.temperatureLabel.text = "\(String(format:"%.01f", self.currentTemperature)) °C"
+            print("update UI")
+            
+            self.cityLabel.text = self.locationWeather.city
+            self.temperatureLabel.text = "\(String(format:"%.01f", self.locationWeather.temperatureList[0].temperature)) °C"
             
             // Unhide labels
             self.cityLabel.isHidden = false
             self.temperatureLabel.isHidden = false
             
             // Update weather icon
-            self.weatherImg.image = UIImage(named: self.currentWeatherIcon)
+            self.weatherImg.image = UIImage(named: self.locationWeather.temperatureList[0].icon)
         })
         
     }
