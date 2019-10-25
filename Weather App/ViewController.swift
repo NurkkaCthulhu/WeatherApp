@@ -117,8 +117,8 @@ class ViewController: UIViewController {
                 //print(listItem.dt_txt)
                 //print(listItem.main.temp)
                 //print(listItem.weather[0].icon)
-                let currentTemperature = weatherData.list[0].main.temp - celsiusfy
-                locationWeather.temperatureList.append(WeatherObject(temperature: currentTemperature, time: weatherData.list[0].dt_txt, icon: listItem.weather[0].icon))
+                let currentTemperature = listItem.main.temp - celsiusfy
+                locationWeather.temperatureList.append(WeatherObject(temperature: currentTemperature, time: String(listItem.dt_txt.dropLast(3)), icon: listItem.weather[0].icon))
             }
             //var currentTemperature = weatherData.list[0].main.temp
             //currentTemperature = currentTemperature - celsiusfy
