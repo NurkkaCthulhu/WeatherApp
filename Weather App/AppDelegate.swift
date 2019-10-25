@@ -91,9 +91,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             } else {
                 if let placemarks = placemarks, let placemark = placemarks.first {
                     if placemark.locality != nil {
-                        self.locationWeather.city = placemark.locality!
+                        print("pistetää gpsCity")
+                        self.locationWeather.gpsCity = placemark.locality!
                     } else {
-                        self.locationWeather.city = "Tampere"
+                        self.locationWeather.gpsCity = "Earth"
+                        self.locationWeather.city = "Earth"
                         self.locationWeather.lat = 61.4978
                         self.locationWeather.lon = 23.7610
                     }
