@@ -53,7 +53,8 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // Set selected location to show selected on table view
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if cell.textLabel?.text == "Current city" {
+        print("cell text: \(cell.textLabel!.text) and locationweathercity: \(self.locationWeather.city)")
+        if cell.textLabel!.text! == self.locationWeather.city {
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }
     }
