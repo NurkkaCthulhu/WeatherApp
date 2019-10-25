@@ -28,10 +28,17 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    // Determine what happens when a cell is clicked
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(locationsArray[indexPath.row])
+    }
+    
+    // Determine how many cells are created
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.locationsArray.count
     }
     
+    // Add cells to table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "cityName")
     
@@ -42,6 +49,13 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell!.imageView?.image = UIImage(named: "city")
         
         return cell!
+    }
+    
+    // Set selected location to show selected on table view
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if cell.textLabel?.text == "Current city" {
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        }
     }
     
     // vv ALERT FUNCTION vv
