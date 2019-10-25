@@ -13,13 +13,17 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var determineMyCurrentLocation : (() -> Void)?
     var locationWeather : LocationWeatherModel!
-    var locationsArray = ["Current city", "Tampere"]
+    var locationsArray : [String]!
+    var currentCity : String!
     
     // UI links
     @IBOutlet weak var cityTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.currentCity = self.locationWeather.gpsCity
+        locationsArray = ["\(self.locationWeather.gpsCity)", "Tampere"]
         
         self.cityTableView.dataSource = self
         self.cityTableView.delegate = self
@@ -31,6 +35,7 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // Determine what happens when a cell is clicked
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(locationsArray[indexPath.row])
+        self.locationWeather.city = locationsArray[indexPath.row]
     }
     
     // Determine how many cells are created
@@ -53,8 +58,8 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // Set selected location to show selected on table view
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print("cell text: \(cell.textLabel!.text) and locationweathercity: \(self.locationWeather.city)")
-        if cell.textLabel!.text! == self.locationWeather.city {
+        //print("cell text: \(self.currentCity) and locationweathercity: \(self.locationWeather.city)")
+        if cell.textLabel?.text == self.locationWeather.city {
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }
     }
