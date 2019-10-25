@@ -183,6 +183,33 @@
 				9299A795234CB2AC0022E69A /* Info.plist */,
 				925C5D2023509868002AED9F /* LocationWeatherModel.swift */,
 				92B57B25234F5E19008356CA /* WeatherData.swift */,
+				92D2E0222362E90000DC5EE2 /* icons */,
+				9259A2AF2361DDEE001B8F6C /* SecretKeys.swift */,
+			);
+			path = "Weather App";
+			sourceTree = "<group>";
+		};
+		9299A79D234CB2AD0022E69A /* Weather AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				9299A79E234CB2AD0022E69A /* Weather_AppTests.swift */,
+				9299A7A0234CB2AD0022E69A /* Info.plist */,
+			);
+			path = "Weather AppTests";
+			sourceTree = "<group>";
+		};
+		9299A7A8234CB2AD0022E69A /* Weather AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9299A7A9234CB2AD0022E69A /* Weather_AppUITests.swift */,
+				9299A7AB234CB2AD0022E69A /* Info.plist */,
+			);
+			path = "Weather AppUITests";
+			sourceTree = "<group>";
+		};
+		92D2E0222362E90000DC5EE2 /* icons */ = {
+			isa = PBXGroup;
+			children = (
 				92A979D42360722500BC1F55 /* city@2x.png */,
 				92A979D62360722500BC1F55 /* city@3x.png */,
 				92A979D92360722500BC1F55 /* currentweather@2x.png */,
@@ -216,27 +243,8 @@
 				926B274E236050700027BD28 /* city.png */,
 				926B2754236050700027BD28 /* currentweather.png */,
 				926B274F236050700027BD28 /* forecast.png */,
-				9259A2AF2361DDEE001B8F6C /* SecretKeys.swift */,
 			);
-			path = "Weather App";
-			sourceTree = "<group>";
-		};
-		9299A79D234CB2AD0022E69A /* Weather AppTests */ = {
-			isa = PBXGroup;
-			children = (
-				9299A79E234CB2AD0022E69A /* Weather_AppTests.swift */,
-				9299A7A0234CB2AD0022E69A /* Info.plist */,
-			);
-			path = "Weather AppTests";
-			sourceTree = "<group>";
-		};
-		9299A7A8234CB2AD0022E69A /* Weather AppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				9299A7A9234CB2AD0022E69A /* Weather_AppUITests.swift */,
-				9299A7AB234CB2AD0022E69A /* Info.plist */,
-			);
-			path = "Weather AppUITests";
+			path = icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
