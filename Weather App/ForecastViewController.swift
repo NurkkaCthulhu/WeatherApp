@@ -38,9 +38,10 @@ class ForecastViewController: UIViewController, UITableViewDataSource, UITableVi
         var cell = tableView.dequeueReusableCell(withIdentifier: "forecastCell")
         
         if (cell == nil) {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "forecastCell")
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "forecastCell")
         }
-        cell!.textLabel?.text = "moikka"
+        cell!.textLabel?.text = "\(locationWeather.city) \(String(format:"%.01f", self.locationWeather.temperatureList[indexPath.row].temperature)) °C"
+        cell!.detailTextLabel?.text = locationWeather.temperatureList[indexPath.row].time
         cell!.imageView?.image = UIImage(named: locationWeather.temperatureList[indexPath.row].icon)
         // Set the cell so that the cell does not look selected even if clicked
         cell!.selectionStyle = UITableViewCell.SelectionStyle.none
