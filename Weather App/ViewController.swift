@@ -33,7 +33,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=\(self.locationWeather.lat)&lon=\(self.locationWeather.lon)&APPID=\(self.secretKeys.api)"
+        //self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=\(self.locationWeather.lat)&lon=\(self.locationWeather.lon)&APPID=\(self.secretKeys.api)"
+        
+        self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=\(self.locationWeather.city)&APPID=\(self.secretKeys.api)"
         
         addLoadingAnimation()
 
@@ -50,7 +52,7 @@ class ViewController: UIViewController {
         */
         // Do fetch if city was changed or over 5min has gone by since last fetch
         if cityLabel.text != locationWeather.city || fetchNewData() {
-            print("uus fetch")
+            print("uus fetch paikkaan \(self.locationWeather.city)")
             fetchUrl(url: apiUrl)
         }
     }
@@ -120,13 +122,6 @@ class ViewController: UIViewController {
                 let currentTemperature = listItem.main.temp - celsiusfy
                 locationWeather.temperatureList.append(WeatherObject(temperature: currentTemperature, time: String(listItem.dt_txt.dropLast(3)), icon: listItem.weather[0].icon))
             }
-            //var currentTemperature = weatherData.list[0].main.temp
-            //currentTemperature = currentTemperature - celsiusfy
-
-            //let currentWeatherIcon = weatherData.list[0].weather[0].icon
-            //print(weatherData.list.count)
-            //locationWeather.temperatureList.append(WeatherObject(temperature: currentTemperature, time: weatherData.list[0].dt_txt, icon: currentWeatherIcon))
-            
         } catch {
             NSLog("Error trying to convert data to JSON, \(error)")
         }
