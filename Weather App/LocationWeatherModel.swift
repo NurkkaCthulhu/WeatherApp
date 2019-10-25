@@ -14,7 +14,6 @@ class LocationWeatherModel {
     var lat : Double
     var lon : Double
     var lastFetch : Date
-    var icon: String
     
     init() {
         city = "Tampere"
@@ -24,7 +23,6 @@ class LocationWeatherModel {
         lon = 23.7610
         // Date to 1997-02-02 02:26:51
         lastFetch = Date(timeIntervalSinceReferenceDate: -123456789.0)
-        icon = "city"
     }
 }
 
