@@ -29,11 +29,11 @@ class ViewController: UIViewController {
     var secretKeys : SecretKeys = SecretKeys()
     var apiUrl : String!
     var weatherData : WeatherData!
+    let celsiusfy : Double = 273.15
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=\(self.locationWeather.lat)&lon=\(self.locationWeather.lon)&APPID=\(self.secretKeys.api)"
-        print(self.locationWeather)
         
         addLoadingAnimation()
 
@@ -111,22 +111,30 @@ class ViewController: UIViewController {
             //print("test printing something small from the object:")
             //print(weather.city.name)
 
-            var currentTemperature = weatherData.list[0].main.temp
-            currentTemperature = currentTemperature - 273.15
+            locationWeather.city = weatherData.city.name
+            
+            for listItem in weatherData.list {
+                //print(listItem.dt_txt)
+                //print(listItem.main.temp)
+                //print(listItem.weather[0].icon)
+                let currentTemperature = weatherData.list[0].main.temp - celsiusfy
+                locationWeather.temperatureList.append(WeatherObject(temperature: currentTemperature, time: weatherData.list[0].dt_txt, icon: listItem.weather[0].icon))
+            }
+            //var currentTemperature = weatherData.list[0].main.temp
+            //currentTemperature = currentTemperature - celsiusfy
 
-            let currentWeatherIcon = weatherData.list[0].weather[0].icon
-            print(weatherData.list.count)
-            locationWeather.temperatureList.append(WeatherObject(temperature: currentTemperature, time: weatherData.list[0].dt_txt, icon: currentWeatherIcon))
+            //let currentWeatherIcon = weatherData.list[0].weather[0].icon
+            //print(weatherData.list.count)
+            //locationWeather.temperatureList.append(WeatherObject(temperature: currentTemperature, time: weatherData.list[0].dt_txt, icon: currentWeatherIcon))
             
         } catch {
-            print("Error trying to convert data to JSON")
-            print(error)
+            NSLog("Error trying to convert data to JSON, \(error)")
         }
         
         // Execute stuff in UI thread
         DispatchQueue.main.async(execute: {() in
             
-            print("update UI")
+            NSLog("update UI")
             
             self.cityLabel.text = self.locationWeather.city
             self.temperatureLabel.text = "\(String(format:"%.01f", self.locationWeather.temperatureList[0].temperature)) °C"
