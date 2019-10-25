@@ -10,6 +10,7 @@ import Foundation
 
 class LocationWeatherModel {
     var city : String
+    var gpsCity : String
     var temperatureList : [WeatherObject]
     var lat : Double
     var lon : Double
@@ -17,6 +18,7 @@ class LocationWeatherModel {
     
     init() {
         city = "Tampere"
+        gpsCity = "Earth"
         temperatureList = []
         // Tampere lat and lon
         lat = 61.4978
