@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         let myCityViewController = tabController.viewControllers![2] as! CityViewController
         myCityViewController.locationWeather = self.locationWeather
+        myCityViewController.determineMyCurrentLocation = self.determineMyCurrentLocation
         
         determineMyCurrentLocation()
         
@@ -53,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     // vv LOCATION RELATED FUNCTIONS vv
-    func determineMyCurrentLocation() {
+    func determineMyCurrentLocation() -> Void {
         locationManager = CLLocationManager()
         locationManager.delegate = self
         
@@ -96,9 +97,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                         self.locationWeather.lat = 61.4978
                         self.locationWeather.lon = 23.7610
                     }
-                    
                 } else {
-                    //self.meetingName.text = "No Matching Addresses Found"
+                    NSLog("Oh no, an error occurred")
                 }
             }
         }

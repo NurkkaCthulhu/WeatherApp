@@ -11,6 +11,7 @@ import UIKit
 
 class CityViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var determineMyCurrentLocation : (() -> Void)?
     var locationWeather : LocationWeatherModel!
     var locationsArray = ["Current city", "Tampere"]
     
@@ -22,6 +23,9 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         self.cityTableView.dataSource = self
         self.cityTableView.delegate = self
+        
+        self.determineMyCurrentLocation!()
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,6 +59,7 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
             print("showing alert")
         }
     }
+    
     
 }
 
