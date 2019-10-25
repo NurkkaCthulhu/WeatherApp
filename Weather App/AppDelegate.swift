@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Start reversing the location lat/long into a city
         geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
             if let error = error {
-                print("Unable to Reverse Geocode Location (\(error))")
+                NSLog("Unable to Reverse Geocode Location (\(error))")
             } else {
                 if let placemarks = placemarks, let placemark = placemarks.first {
                     if placemark.locality != nil {
@@ -106,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error \(error)")
+        NSLog("Error \(error)")
     }
 
 
