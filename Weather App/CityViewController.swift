@@ -41,7 +41,6 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // Determine what happens when a cell is clicked
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(locationsArray[indexPath.row])
         self.locationWeather.city = locationsArray[indexPath.row]
         self.selectedCity = locationsArray[indexPath.row]
     }
@@ -66,28 +65,11 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // Set selected location to show selected on table view
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        //print("cell text: \(self.currentCity) and locationweathercity: \(self.locationWeather.city)")
         if cell.textLabel?.text == self.locationWeather.city {
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }
     }
-    
-    // vv ALERT FUNCTION vv
-    func showAlert(userInput : String) {
-        // Create alert with options
-        let alertController = UIAlertController(title: "City not found", message: "Could not find city for \(userInput)!", preferredStyle: .alert)
-        
-        // Make the user accept that they made a mistake
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-        }
-        alertController.addAction(OKAction)
-        
-        // Show the alert
-        self.present(alertController, animated: true) {
-            print("showing alert")
-        }
-    }
-    
+
     // vv LOCATION RELATED FUNCTIONS vv
     func determineMyCurrentLocation() -> Void {
         locationManager = CLLocationManager()
@@ -103,11 +85,6 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation = locations.last
         
-        //self.meetingCostModel.latitude = (userLocation?.coordinate.latitude)!
-        //self.meetingCostModel.longitude = (userLocation?.coordinate.longitude)!
-        //print("locationmanager functio \(String(describing: userLocation?.coordinate.latitude))!")
-        //print("locationmanager functio \(String(describing: userLocation?.coordinate.longitude))!")
-        
         locationWeather.lat = (userLocation?.coordinate.latitude)!
         locationWeather.lon = (userLocation?.coordinate.longitude)!
         
@@ -118,7 +95,7 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func findCityFromCoordinates() {
         let location = CLLocation(latitude: locationWeather.lat, longitude: locationWeather.lon)
-        //let location = CLLocation(latitude: 0, longitude: 0)
+
         // Start reversing the location lat/long into a city
         geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
             if let error = error {
@@ -126,7 +103,6 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
             } else {
                 if let placemarks = placemarks, let placemark = placemarks.first {
                     if placemark.locality != nil {
-                        print("pistetää gpsCity")
                         self.locationWeather.gpsCity = placemark.locality!
                         self.locationsArray[0] = self.locationWeather.gpsCity
                         self.cityTableView.reloadData()

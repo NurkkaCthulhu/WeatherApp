@@ -33,9 +33,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=\(self.locationWeather.lat)&lon=\(self.locationWeather.lon)&APPID=\(self.secretKeys.api)"
-        
-        //self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=\(self.locationWeather.city)&APPID=\(self.secretKeys.api)"
 
         self.cityLabel.text = "Loading..."
         self.temperatureLabel.isHidden = true
@@ -48,8 +45,8 @@ class ViewController: UIViewController {
     }
     
     func fetchWeatherData() {
+        
         if self.cityLabel.text != self.locationWeather.city || self.fetchNewData() {
-            print("uus fetch paikkaan \(self.locationWeather.city) by VIEW")
             // Make sure there are no spaces in the city name
             let city = self.locationWeather.city.replacingOccurrences(of: " ", with: "%20")
             self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=\(city)&APPID=\(self.secretKeys.api)"
@@ -65,11 +62,9 @@ class ViewController: UIViewController {
         let minutes = seconds/60
         
         if minutes >= 5 {
-            //print("over 5min")
             locationWeather.lastFetch = currentDate
             return true
         } else {
-            //print("not even 5min")
             return false
         }
     }
@@ -89,8 +84,6 @@ class ViewController: UIViewController {
     }
 
     func fetchUrl(url : String) {
-        
-        print("we fetching bois by VIEW")
         
         let config = URLSessionConfiguration.default
         
@@ -123,8 +116,6 @@ class ViewController: UIViewController {
         
         // Execute stuff in UI thread
         DispatchQueue.main.async(execute: {() in
-            
-            NSLog("update UI by VIEW")
             
             self.cityLabel.text = self.locationWeather.city
             self.temperatureLabel.text = "\(String(format:"%.01f", self.locationWeather.temperatureList[0].temperature)) °C"

@@ -17,7 +17,7 @@ class ForecastViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.forecastTable.dataSource = self
         self.forecastTable.delegate = self
 
@@ -25,11 +25,6 @@ class ForecastViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidAppear(_ animated: Bool) {
         self.forecastTable.reloadData()
-    }
-    
-    // Determine what happens when a cell is clicked
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print("moi")
     }
     
     // Determine how many cells are created
@@ -47,7 +42,8 @@ class ForecastViewController: UIViewController, UITableViewDataSource, UITableVi
         cell!.textLabel?.text = "\(self.locationWeather.city) \(String(format:"%.01f", self.locationWeather.temperatureList[indexPath.row].temperature)) °C"
         cell!.detailTextLabel?.text = self.locationWeather.temperatureList[indexPath.row].time
         cell!.imageView?.image = UIImage(named: self.locationWeather.temperatureList[indexPath.row].icon)
-        // Set the cell so that the cell does not look selected even if clicked
+        
+        // Set the cell selectionStyle so that the cell does not look selected even if clicked
         cell!.selectionStyle = UITableViewCell.SelectionStyle.none
         
         return cell!

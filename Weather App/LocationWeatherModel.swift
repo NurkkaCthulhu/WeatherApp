@@ -23,7 +23,7 @@ class LocationWeatherModel {
         // Tampere lat and lon
         lat = 61.4978
         lon = 23.7610
-        // Date to 1997-02-02 02:26:51
+        // Set last fetch date to 1997-02-02 02:26:51
         lastFetch = Date(timeIntervalSinceReferenceDate: -123456789.0)
     }
 }
