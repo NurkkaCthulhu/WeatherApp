@@ -9,5 +9,5 @@
 import Foundation
 
 class SecretKeys {
-    public var api: String = ""
+    public var api: String = "YOU API KEY HERE"
 }
