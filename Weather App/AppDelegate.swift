@@ -7,16 +7,11 @@
 //
 
 import UIKit
-import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window : UIWindow?
-    
-    var locationManager : CLLocationManager!
-    var geocoder = CLGeocoder()
-    
+    var window : UIWindow?    
     var locationWeather : LocationWeatherModel!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -31,9 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         let myCityViewController = tabController.viewControllers![2] as! CityViewController
         myCityViewController.locationWeather = self.locationWeather
-        myCityViewController.determineMyCurrentLocation = self.determineMyCurrentLocation
-        
-        determineMyCurrentLocation()
         
         return true
     }
@@ -52,65 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func applicationWillTerminate(_ application: UIApplication) {
     }
-    
-    // vv LOCATION RELATED FUNCTIONS vv
-    func determineMyCurrentLocation() -> Void {
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        
-        locationManager.requestAlwaysAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation = locations.last
-        
-        //self.meetingCostModel.latitude = (userLocation?.coordinate.latitude)!
-        //self.meetingCostModel.longitude = (userLocation?.coordinate.longitude)!
-        //print("locationmanager functio \(String(describing: userLocation?.coordinate.latitude))!")
-        //print("locationmanager functio \(String(describing: userLocation?.coordinate.longitude))!")
-        
-        locationWeather.lat = (userLocation?.coordinate.latitude)!
-        locationWeather.lon = (userLocation?.coordinate.longitude)!
-        
-        findCityFromCoordinates()
-        
-        self.locationManager.stopUpdatingLocation()
-    }
-    
-    func findCityFromCoordinates() {
-        let location = CLLocation(latitude: locationWeather.lat, longitude: locationWeather.lon)
-        //let location = CLLocation(latitude: 0, longitude: 0)
-        // Start reversing the location lat/long into a city
-        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-            if let error = error {
-                NSLog("Unable to Reverse Geocode Location (\(error))")
-            } else {
-                if let placemarks = placemarks, let placemark = placemarks.first {
-                    if placemark.locality != nil {
-                        print("pistetää gpsCity")
-                        self.locationWeather.gpsCity = placemark.locality!
-                    } else {
-                        self.locationWeather.gpsCity = "Earth"
-                        self.locationWeather.city = "Earth"
-                        self.locationWeather.lat = 61.4978
-                        self.locationWeather.lon = 23.7610
-                    }
-                } else {
-                    NSLog("Oh no, an error occurred")
-                }
-            }
-        }
-        
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        NSLog("Error \(error)")
-    }
-
 
 }
 
