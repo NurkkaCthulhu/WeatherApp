@@ -13,7 +13,6 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var locationWeather : LocationWeatherModel!
     var locationsArray : [String]!
-    var currentCity : String!
     var startCity : String!
     var selectedCity : String!
     
@@ -26,8 +25,7 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.currentCity = self.locationWeather.gpsCity
-        locationsArray = ["\(self.locationWeather.gpsCity)", "Tampere"]
+        self.locationsArray = ["Loading your location...", "Tampere"]
         
         self.cityTableView.dataSource = self
         self.cityTableView.delegate = self
@@ -39,15 +37,6 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidAppear(_ animated: Bool) {
         self.startCity = self.locationWeather.city
         self.selectedCity = self.locationWeather.city
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        print("katotaa updaten tarve")
-        if self.startCity != self.selectedCity {
-            print("pls update")
-            self.locationWeather.dataNeedsUpdate = true
-            
-        }
     }
     
     // Determine what happens when a cell is clicked
@@ -101,7 +90,6 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // vv LOCATION RELATED FUNCTIONS vv
     func determineMyCurrentLocation() -> Void {
-        print("location fetch?")
         locationManager = CLLocationManager()
         locationManager.delegate = self
         
