@@ -19,16 +19,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVM-fe-DzE">
-                                <rect key="frame" x="20" y="195" width="374" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="195" width="374" height="26.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="load0.png" translatesAutoresizingMaskIntoConstraints="NO" id="49n-gP-ICv">
-                                <rect key="frame" x="20" y="236" width="374" height="128"/>
+                                <rect key="frame" x="20" y="241.33333333333337" width="374" height="128"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qex-Ia-iEm">
-                                <rect key="frame" x="20" y="384" width="374" height="21"/>
+                                <rect key="frame" x="20" y="389.33333333333331" width="374" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -68,12 +68,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Ko-4m-5Gh">
-                                <rect key="frame" x="20" y="81" width="374" height="586"/>
+                                <rect key="frame" x="20" y="86" width="374" height="581"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 day weather" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7EY-vq-LKg">
-                                <rect key="frame" x="20" y="40" width="374" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="40" width="374" height="26"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -109,16 +109,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Ni-8H-llY">
-                                <rect key="frame" x="20" y="40" width="374" height="627"/>
+                                <rect key="frame" x="20" y="40" width="374" height="568.33333333333337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please check Current weather-tab to update data!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9r-p2-rbS">
+                                <rect key="frame" x="20" y="628.33333333333337" width="374" height="38.666666666666629"/>
+                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="19"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.02328635045" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="fce-KE-8M8" firstAttribute="trailing" secondItem="I9r-p2-rbS" secondAttribute="trailing" constant="20" id="Cyp-Ps-Lyd"/>
+                            <constraint firstItem="fce-KE-8M8" firstAttribute="bottom" secondItem="I9r-p2-rbS" secondAttribute="bottom" constant="20" id="Ibv-Q4-YdW"/>
+                            <constraint firstItem="I9r-p2-rbS" firstAttribute="top" secondItem="7Ni-8H-llY" secondAttribute="bottom" constant="20" id="Xdn-ER-1jq"/>
                             <constraint firstItem="7Ni-8H-llY" firstAttribute="leading" secondItem="fce-KE-8M8" secondAttribute="leading" constant="20" id="Y8f-JR-csq"/>
                             <constraint firstItem="fce-KE-8M8" firstAttribute="trailing" secondItem="7Ni-8H-llY" secondAttribute="trailing" constant="20" id="a8h-x3-9it"/>
                             <constraint firstItem="7Ni-8H-llY" firstAttribute="top" secondItem="fce-KE-8M8" secondAttribute="top" constant="20" id="hgn-JH-4j6"/>
-                            <constraint firstItem="fce-KE-8M8" firstAttribute="bottom" secondItem="7Ni-8H-llY" secondAttribute="bottom" constant="20" id="qae-eY-ocj"/>
+                            <constraint firstItem="I9r-p2-rbS" firstAttribute="leading" secondItem="fce-KE-8M8" secondAttribute="leading" constant="20" id="o3s-aI-K5X"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fce-KE-8M8"/>
                     </view>
@@ -130,7 +139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AE5-yR-XfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="756" y="456"/>
+            <point key="canvasLocation" x="755.07246376811599" y="455.70652173913049"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ah1-1k-nTM">

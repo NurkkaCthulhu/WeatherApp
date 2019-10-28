@@ -25,7 +25,7 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.locationsArray = ["Loading your location...", "Tampere"]
+        self.locationsArray = ["Loading your location...", "Tampere", "Helsinki", "Turku", "Tokyo", "London"]
         
         self.cityTableView.dataSource = self
         self.cityTableView.delegate = self
