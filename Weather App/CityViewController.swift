@@ -14,6 +14,8 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var locationWeather : LocationWeatherModel!
     var locationsArray : [String]!
     var currentCity : String!
+    var startCity : String!
+    var selectedCity : String!
     
     var locationManager : CLLocationManager!
     var geocoder = CLGeocoder()
@@ -34,10 +36,25 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.startCity = self.locationWeather.city
+        self.selectedCity = self.locationWeather.city
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("katotaa updaten tarve")
+        if self.startCity != self.selectedCity {
+            print("pls update")
+            self.locationWeather.dataNeedsUpdate = true
+            
+        }
+    }
+    
     // Determine what happens when a cell is clicked
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(locationsArray[indexPath.row])
         self.locationWeather.city = locationsArray[indexPath.row]
+        self.selectedCity = locationsArray[indexPath.row]
     }
     
     // Determine how many cells are created
@@ -126,10 +143,9 @@ class CityViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         self.locationsArray[0] = self.locationWeather.gpsCity
                         self.cityTableView.reloadData()
                     } else {
+                        // Add Earth to gpsCity and city if no locality was found
                         self.locationWeather.gpsCity = "Earth"
                         self.locationWeather.city = "Earth"
-                        self.locationWeather.lat = 61.4978
-                        self.locationWeather.lon = 23.7610
                         self.locationsArray[0] = self.locationWeather.gpsCity
                     }
                 } else {
