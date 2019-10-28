@@ -35,9 +35,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         //self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=\(self.locationWeather.lat)&lon=\(self.locationWeather.lon)&APPID=\(self.secretKeys.api)"
         
-        self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=\(self.locationWeather.city)&APPID=\(self.secretKeys.api)"
-        
-        addLoadingAnimation()
+        //self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=\(self.locationWeather.city)&APPID=\(self.secretKeys.api)"
 
         cityLabel.text = "Loading..."
         temperatureLabel.isHidden = true
@@ -53,6 +51,11 @@ class ViewController: UIViewController {
         // Do fetch if city was changed or over 5min has gone by since last fetch
         if cityLabel.text != locationWeather.city || fetchNewData() {
             print("uus fetch paikkaan \(self.locationWeather.city)")
+            // Make sure there are no spaces in the city name
+            let city = self.locationWeather.city.replacingOccurrences(of: " ", with: "%20")
+            self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=\(city)&APPID=\(self.secretKeys.api)"
+            
+            addLoadingAnimation()
             fetchUrl(url: apiUrl)
         }
     }
