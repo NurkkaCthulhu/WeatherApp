@@ -54,8 +54,6 @@ class ViewController: UIViewController {
             let city = self.locationWeather.city.replacingOccurrences(of: " ", with: "%20")
             self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=\(city)&APPID=\(self.secretKeys.api)"
             
-            self.locationWeather.dataNeedsUpdate = true
-            
             self.addLoadingAnimation()
             fetchUrl(url: apiUrl)
         }
