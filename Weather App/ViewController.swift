@@ -37,25 +37,26 @@ class ViewController: UIViewController {
         
         //self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=\(self.locationWeather.city)&APPID=\(self.secretKeys.api)"
 
-        cityLabel.text = "Loading..."
-        temperatureLabel.isHidden = true
+        self.cityLabel.text = "Loading..."
+        self.temperatureLabel.isHidden = true
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        /*
-        print("uudellee main viewis")
-        print(cityLabel.text)
-        print(locationWeather.city)
-        */
         // Do fetch if city was changed or over 5min has gone by since last fetch
-        if cityLabel.text != locationWeather.city || fetchNewData() {
-            print("uus fetch paikkaan \(self.locationWeather.city)")
+        self.fetchWeatherData()
+    }
+    
+    func fetchWeatherData() {
+        if self.cityLabel.text != self.locationWeather.city || self.fetchNewData() {
+            print("uus fetch paikkaan \(self.locationWeather.city) by VIEW")
             // Make sure there are no spaces in the city name
             let city = self.locationWeather.city.replacingOccurrences(of: " ", with: "%20")
             self.apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=\(city)&APPID=\(self.secretKeys.api)"
             
-            addLoadingAnimation()
+            self.locationWeather.dataNeedsUpdate = true
+            
+            self.addLoadingAnimation()
             fetchUrl(url: apiUrl)
         }
     }
@@ -91,7 +92,7 @@ class ViewController: UIViewController {
 
     func fetchUrl(url : String) {
         
-        print("we fetching bois")
+        print("we fetching bois by VIEW")
         
         let config = URLSessionConfiguration.default
         
@@ -111,17 +112,10 @@ class ViewController: UIViewController {
         let decoder = JSONDecoder()
         do {
             self.weatherData = try decoder.decode(WeatherData.self, from: data!)
-            //print("print whole Weather object:")
-            //print(weather)
-            //print("test printing something small from the object:")
-            //print(weather.city.name)
 
             locationWeather.city = weatherData.city.name
             
             for listItem in weatherData.list {
-                //print(listItem.dt_txt)
-                //print(listItem.main.temp)
-                //print(listItem.weather[0].icon)
                 let currentTemperature = listItem.main.temp - celsiusfy
                 locationWeather.temperatureList.append(WeatherObject(temperature: currentTemperature, time: String(listItem.dt_txt.dropLast(3)), icon: listItem.weather[0].icon))
             }
@@ -132,7 +126,7 @@ class ViewController: UIViewController {
         // Execute stuff in UI thread
         DispatchQueue.main.async(execute: {() in
             
-            NSLog("update UI")
+            NSLog("update UI by VIEW")
             
             self.cityLabel.text = self.locationWeather.city
             self.temperatureLabel.text = "\(String(format:"%.01f", self.locationWeather.temperatureList[0].temperature)) °C"
